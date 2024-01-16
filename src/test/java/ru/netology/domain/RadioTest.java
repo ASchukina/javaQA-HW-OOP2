@@ -140,6 +140,20 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldCircleIncreaseRadioStationNum() {
+        Radio radio = new Radio();
+
+        radio.setRadioStationNum(9);
+
+        radio.nextRadioStationNum();
+
+        int expected = 0;
+        int actual = radio.getRadioStationNum();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldDecreaseRadioStationNum() {
         Radio radio = new Radio();
 
@@ -148,6 +162,20 @@ public class RadioTest {
         radio.prevRadioStationNum();
 
         int expected = 3;
+        int actual = radio.getRadioStationNum();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldCircleDecreaseRadioStationNum() {
+        Radio radio = new Radio();
+
+        radio.setRadioStationNum(0);
+
+        radio.prevRadioStationNum();
+
+        int expected = 9;
         int actual = radio.getRadioStationNum();
 
         Assertions.assertEquals(expected, actual);
@@ -168,6 +196,20 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldNotPlusAdioValume() {
+        Radio radio = new Radio();
+
+        radio.setAudioVolume(100);
+
+        radio.plusAudioVolume();
+
+        int expected = 100;
+        int actual = radio.getAudioVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldMinesAdioValume() {
         Radio radio = new Radio();
 
@@ -176,6 +218,20 @@ public class RadioTest {
         radio.minesAudioVolume();
 
         int expected = 39;
+        int actual = radio.getAudioVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotMinesAdioValume() {
+        Radio radio = new Radio();
+
+        radio.setAudioVolume(0);
+
+        radio.minesAudioVolume();
+
+        int expected = 0;
         int actual = radio.getAudioVolume();
 
         Assertions.assertEquals(expected, actual);
