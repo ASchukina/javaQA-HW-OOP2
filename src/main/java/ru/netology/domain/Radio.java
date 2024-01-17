@@ -1,8 +1,8 @@
 package ru.netology.domain;
 
 public class Radio {
-    public int radioStationNum;
-    public int audioVolume;
+    private int radioStationNum;
+    private int audioVolume;
 
     public int getRadioStationNum() {
         return radioStationNum;
@@ -10,22 +10,6 @@ public class Radio {
 
     public int getAudioVolume() {
         return audioVolume;
-    }
-
-    public void setToMaxRadioStationNum() {
-        radioStationNum = 9;
-    }
-
-    public void setToMaxAudioVolume() {
-        audioVolume = 100;
-    }
-
-    public void setToMinRadioStationNum() {
-        radioStationNum = 0;
-    }
-
-    public void setToMinAudioVolume() {
-        audioVolume = 0;
     }
 
     public void setRadioStationNum(int nextRadioStationNum) {
@@ -46,6 +30,22 @@ public class Radio {
             nextAudioVolume = 0;
         }
         audioVolume = nextAudioVolume;
+    }
+
+    public void setToMaxRadioStationNum() {
+        radioStationNum = 9;
+    }
+
+    public void setToMaxAudioVolume() {
+        audioVolume = 100;
+    }
+
+    public void setToMinRadioStationNum() {
+        radioStationNum = 0;
+    }
+
+    public void setToMinAudioVolume() {
+        audioVolume = 0;
     }
 
     public void nextRadioStationNum() {
