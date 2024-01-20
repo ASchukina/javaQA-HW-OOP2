@@ -18,6 +18,50 @@ public class RadioTest {
     }
 
     @Test
+    void paramTestRadioStation() {
+        Radio radio = new Radio(3);
+
+        radio.setRadioStationNum(2);
+
+        Assertions.assertEquals(0, radio.getMinRadioStationNum());
+        Assertions.assertEquals(2, radio.getMaxRadioStationNum());
+        Assertions.assertEquals(2, radio.getRadioStationNum());
+    }
+
+    @Test
+    void paramTestRadioStation2() {
+        Radio radio = new Radio(15);
+
+        radio.setRadioStationNum(10);
+
+        Assertions.assertEquals(0, radio.getMinRadioStationNum());
+        Assertions.assertEquals(14, radio.getMaxRadioStationNum());
+        Assertions.assertEquals(10, radio.getRadioStationNum());
+    }
+
+    @Test
+    void paramTestRadioStationHighBorder() {
+        Radio radio = new Radio(3);
+
+        radio.setRadioStationNum(radio.getMaxRadioStationNum());
+
+        Assertions.assertEquals(0, radio.getMinRadioStationNum());
+        Assertions.assertEquals(2, radio.getMaxRadioStationNum());
+        Assertions.assertEquals(2, radio.getRadioStationNum());
+    }
+
+    @Test
+    void paramTestRadioStationMinBorder() {
+        Radio radio = new Radio(3);
+
+        radio.setRadioStationNum(radio.getMinRadioStationNum());
+
+        Assertions.assertEquals(0, radio.getMinRadioStationNum());
+        Assertions.assertEquals(2, radio.getMaxRadioStationNum());
+        Assertions.assertEquals(0, radio.getRadioStationNum());
+    }
+
+    @Test
     void shouldGetAudioVolume() {
         Radio radio = new Radio();
 
@@ -34,7 +78,6 @@ public class RadioTest {
         Radio radio = new Radio();
 
         radio.setRadioStationNum(9);
-        radio.setToMaxRadioStationNum(9);
 
         Assertions.assertEquals(0, radio.getMinRadioStationNum());
         Assertions.assertEquals(9, radio.getMaxRadioStationNum());
@@ -47,7 +90,6 @@ public class RadioTest {
         Radio radio = new Radio();
 
         radio.setRadioStationNum(0);
-        radio.setToMinRadioStationNum(0);
 
         Assertions.assertEquals(0, radio.getMinRadioStationNum());
         Assertions.assertEquals(9, radio.getMaxRadioStationNum());
@@ -83,9 +125,9 @@ public class RadioTest {
 
     @Test
     void maxBorderRadioStationNum() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
-        radio.setRadioStationNum(10);
+        radio.setRadioStationNum(11);
 
         Assertions.assertEquals(0, radio.getMinRadioStationNum());
         Assertions.assertEquals(9, radio.getMaxRadioStationNum());
