@@ -1,8 +1,20 @@
 package ru.netology.domain;
 
 public class Radio {
+    private int maxRadioStationNum = 9;
+    private int minRadioStationNum = 0;
+    private int maxAudioVolume = 100;
+    private int minAudioVolume = 0;
     private int radioStationNum;
     private int audioVolume;
+
+    public Radio(int preferRadioStationNum) {
+        this.maxRadioStationNum = preferRadioStationNum - 1;
+    }
+
+    public Radio() {
+
+    }
 
     public int getRadioStationNum() {
         return radioStationNum;
@@ -12,74 +24,89 @@ public class Radio {
         return audioVolume;
     }
 
-    public void setRadioStationNum(int nextRadioStationNum) {
-        if (nextRadioStationNum > 9) {
+    public int getMaxRadioStationNum() {
+        return maxRadioStationNum;
+    }
+
+    public int getMinRadioStationNum() {
+        return minRadioStationNum;
+    }
+
+    public int getMaxAudioVolume() {
+        return maxAudioVolume;
+    }
+
+    public int getMinAudioVolume() {
+        return minAudioVolume;
+    }
+
+    public void setRadioStationNum(int radioStationNum) {
+        if (radioStationNum > maxRadioStationNum) {
+            this.radioStationNum = minRadioStationNum;
             return;
         }
-        if (nextRadioStationNum < 0) {
-            nextRadioStationNum = 9;
+        if (radioStationNum < minRadioStationNum) {
+            this.radioStationNum = maxRadioStationNum;
+            return;
         }
-        radioStationNum = nextRadioStationNum;
+        this.radioStationNum = radioStationNum;
     }
 
-    public void setAudioVolume(int nextAudioVolume) {
-        if (nextAudioVolume > 100) {
-            nextAudioVolume = 100;
+    public void setAudioVolume(int audioVolume) {
+        if (audioVolume > maxAudioVolume) {
+            this.audioVolume = maxAudioVolume;
+            return;
         }
-        if (nextAudioVolume < 0) {
-            nextAudioVolume = 0;
+        if (audioVolume < minAudioVolume) {
+            this.audioVolume = minAudioVolume;
+            return;
         }
-        audioVolume = nextAudioVolume;
+        this.audioVolume = audioVolume;
     }
 
-    public void setToMaxRadioStationNum() {
-        radioStationNum = 9;
+
+    public void setToMaxAudioVolume(int maxAudioVolume) {
+        this.maxAudioVolume = maxAudioVolume;
     }
 
-    public void setToMaxAudioVolume() {
-        audioVolume = 100;
-    }
+//    public void setToMinRadioStationNum(int minRadioStationNum) {
+//        this.minRadioStationNum = minRadioStationNum;
+//    }
 
-    public void setToMinRadioStationNum() {
-        radioStationNum = 0;
-    }
-
-    public void setToMinAudioVolume() {
-        audioVolume = 0;
+    public void setToMinAudioVolume(int minAudioVolume) {
+        this.minAudioVolume = minAudioVolume;
     }
 
     public void nextRadioStationNum() {
-        if (radioStationNum >= 9) {
-            radioStationNum = 0;
+        if (radioStationNum >= maxRadioStationNum) {
+            this.radioStationNum = minRadioStationNum;
             return;
         }
         radioStationNum = radioStationNum + 1;
     }
 
     public void prevRadioStationNum() {
-        if (radioStationNum <= 0) {
-            radioStationNum = 9;
+        if (radioStationNum <= minRadioStationNum) {
+            this.radioStationNum = maxRadioStationNum;
             return;
         }
         radioStationNum = radioStationNum - 1;
     }
 
     public void plusAudioVolume() {
-        if (audioVolume >= 100) {
-            audioVolume = audioVolume;
+        if (audioVolume >= maxAudioVolume) {
+            this.audioVolume = maxAudioVolume;
+            return;
         }
-        if (audioVolume < 100) {
-            audioVolume = audioVolume + 1;
-        }
+        audioVolume = audioVolume + 1;
     }
 
     public void minesAudioVolume() {
-        if (audioVolume <= 0) {
-            audioVolume = audioVolume;
+        if (audioVolume <= minAudioVolume) {
+            this.audioVolume = minAudioVolume;
+            return;
         }
-        if (audioVolume > 0) {
-            audioVolume = audioVolume - 1;
-        }
+        audioVolume = audioVolume - 1;
     }
 
 
